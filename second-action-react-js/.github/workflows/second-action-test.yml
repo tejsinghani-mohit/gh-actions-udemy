@@ -1,6 +1,7 @@
 name: Test Project
 
 on:
+  workflow_dispatch:  # Allow manual triggering
   push:
     paths:
       - "second-action-react-js/**"
