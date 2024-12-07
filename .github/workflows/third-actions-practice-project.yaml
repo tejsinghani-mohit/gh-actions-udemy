@@ -6,6 +6,7 @@ on:
 
 jobs:
   lint:
+    runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
@@ -23,6 +24,7 @@ jobs:
 
   test:
     needs: lint
+    runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
