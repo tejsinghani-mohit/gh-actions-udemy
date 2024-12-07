@@ -9,5 +9,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+        with:
+          path: main/second-action-react-js
       - name: Print package file
-        run: cat second-action-react-js/package.json
+        run: cat package.json
