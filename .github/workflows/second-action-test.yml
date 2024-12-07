@@ -1,7 +1,7 @@
 name: Second Action Workflow
 
 on:
-  push
+  push:
   workflow_dispatch:  # Allows manual triggering
   
     # paths:
