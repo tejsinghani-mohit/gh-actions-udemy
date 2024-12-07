@@ -1,20 +1,31 @@
-name: Test Project
+name: Second Action Workflow
 
 on:
-  workflow_dispatch:  # Allow manual triggering
   push:
     paths:
-      - "second-action-react-js/**"
+      - "second-action-react-js/**"  # Trigger only on changes within this project
 
 jobs:
-  test-job:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get code
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          path: second-action-react-js
-      - name: Print package file
+
+      # Step 2: Navigate to the project folder
+      - name: Navigate to second-action-react-js
+        working-directory: second-action-react-js
         run: |
-          echo "Working in project2 folder"
-          ls -l  # List contents of the folder
+          echo "Running workflow for second-action-react-js"
+          ls -l  # List files in the project folder
+
+      # # Step 3: Example React.js build step (if required)
+      # - name: Install Dependencies
+      #   working-directory: second-action-react-js
+      #   run: npm install
+
+      # - name: Build React Application
+      #   working-directory: second-action-react-js
+      #   run: npm run build
