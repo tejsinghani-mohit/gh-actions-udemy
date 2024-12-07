@@ -31,3 +31,32 @@ jobs:
       - name: Run tests
         working-directory: second-action-react-js
         run: npm test  
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install NodeJS
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+           node-version: 20
+
+      # Step 3: Example React.js build step (if required)
+      - name: Install Dependencies
+        working-directory: second-action-react-js
+        run: npm ci
+
+      # Step 4: Build Project
+      - name: Build Project
+        working-directory: second-action-react-js
+        run: npm run build
+
+      # Step 4: Deploy
+      - name: Deploy Project
+        working-directory: second-action-react-js
+        run: echo "Deploying..."  
