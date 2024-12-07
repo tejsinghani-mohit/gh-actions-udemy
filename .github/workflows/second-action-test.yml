@@ -1,8 +1,9 @@
 name: Second Action Workflow
 
 on:
-  workflow_dispatch:  # Allows manual triggering
   push
+  workflow_dispatch:  # Allows manual triggering
+  
     # paths:
     #   - "second-action-react-js/**"  # Trigger only on changes within this project
 
