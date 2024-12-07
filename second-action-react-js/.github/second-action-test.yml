@@ -10,6 +10,6 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
         with:
-          path: main/second-action-react-js
+          path: second-action-react-js
       - name: Print package file
         run: cat package.json
