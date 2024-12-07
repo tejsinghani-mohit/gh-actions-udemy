@@ -1,0 +1,79 @@
+name: Third Actions Practice Project
+
+on:
+  push:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  lint:
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies
+      - name: Install dependencies
+        working-directory: third-actions-practice-project
+        runs: npm ci
+
+      # Step 3: Linting
+      - name: Lint 
+        working-directory: third-actions-practice-project
+        run: npm run lint
+
+  test:
+    needs: lint
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies
+      - name: Install dependencies
+        working-directory: third-actions-practice-project
+        runs: npm ci
+
+      # Step 3: Linting
+      - name: Test code 
+        working-directory: third-actions-practice-project
+        run: npm run test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install NodeJS
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+           node-version: 20
+
+      # Step 3: Example React.js build step (if required)
+      - name: Install Dependencies
+        working-directory: third-actions-practice-project
+        run: npm ci
+
+      # Step 4: Build Project
+      - name: Build Project
+        working-directory: third-actions-practice-project
+        run: npm run build
+
+      # Step 4: Deploy
+      - name: Deploy Project
+        working-directory: third-actions-practice-project
+        run: echo "Deploying..."  
+
+  info:
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Output Event details
+      - name: Output Event details
+        run: echo "${{ toJSON(github.events) }}"            
+
