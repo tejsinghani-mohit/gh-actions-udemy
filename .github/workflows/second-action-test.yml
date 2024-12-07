@@ -17,6 +17,7 @@ jobs:
 
       # Step 2: Install NodeJS
       - name: Install NodeJS
+        working-directory: second-action-react-js
         uses: actions/setup-node@v4
         with:
           node-version: 18
