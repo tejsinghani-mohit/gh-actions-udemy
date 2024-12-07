@@ -7,7 +7,7 @@ on:
       - "second-action-react-js/**"  # Trigger only on changes within this project
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,18 +15,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Step 2: Navigate to the project folder
-      - name: Navigate to second-action-react-js
+      # Step 2: Install NodeJS
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Step 3: Example React.js build step (if required)
+      - name: Install Dependencies
         working-directory: second-action-react-js
-        run: |
-          echo "Running workflow for second-action-react-js"
-          ls -l  # List files in the project folder
+        run: npm ci
 
-      # # Step 3: Example React.js build step (if required)
-      # - name: Install Dependencies
-      #   working-directory: second-action-react-js
-      #   run: npm install
-
-      # - name: Build React Application
-      #   working-directory: second-action-react-js
-      #   run: npm run build
+      # Step 4: Run test cases
+      - name: Run tests
+        working-directory: second-action-react-js
+        run: npm test  
