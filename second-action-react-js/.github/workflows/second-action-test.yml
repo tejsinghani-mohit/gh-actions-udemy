@@ -1,7 +1,9 @@
 name: Test Project
 
 on:
-  push
+  push:
+    path:
+      - "second-action-react-js/**"
 
 jobs:
   test-job:
@@ -9,8 +11,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-        with:
-          repository: gh-actions-udemy/second-action-react-js
-          path: second-action-react-js
       - name: Print package file
-        run: cat package.json
+        run: |
+          echo "Working in project2 folder"
+          ls -l  # List contents of the folder
