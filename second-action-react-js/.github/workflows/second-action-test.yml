@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+        with:
+          path: main/second-action-react-js
       - name: Print package file
         run: |
           echo "Working in project2 folder"
