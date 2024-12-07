@@ -2,7 +2,7 @@ name: Test Project
 
 on:
   push:
-    path:
+    paths:
       - "second-action-react-js/**"
 
 jobs:
