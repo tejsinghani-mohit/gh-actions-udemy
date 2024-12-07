@@ -14,7 +14,7 @@ jobs:
       # Step 2: Install dependencies
       - name: Install dependencies
         working-directory: third-actions-practice-project
-        runs: npm ci
+        run: npm ci
 
       # Step 3: Linting
       - name: Lint 
@@ -31,7 +31,7 @@ jobs:
       # Step 2: Install dependencies
       - name: Install dependencies
         working-directory: third-actions-practice-project
-        runs: npm ci
+        run: npm ci
 
       # Step 3: Linting
       - name: Test code 
