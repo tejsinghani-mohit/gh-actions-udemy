@@ -61,3 +61,12 @@ jobs:
       - name: Deploy Project
         working-directory: second-action-react-js
         run: echo "Deploying..."  
+
+  info:
+    needs: [test, deploy]
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Output Github context
+      - name: Checkout Repository
+        run: echo "${{ toJSON(github) }}"
